@@ -1,0 +1,26 @@
+{
+    "name": "cs/magento2-abuse-api",
+    "version": "1.0.0",
+    "description": "Abuse IP Database API Integration for Magento2",
+    "homepage": "https://github.com/df2k2/abuse-api",
+    "require": {
+        "php": "^7.1|^7.2|^7.3",
+        "magento/magento-composer-installer": "*"
+    },
+    "authors": [
+        {
+            "name": "Chris Snedaker",
+            "email": "df2002@gmail.com"
+        }
+    ],
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Cs\\AbuseApi\\": ""
+        }
+    }
+}

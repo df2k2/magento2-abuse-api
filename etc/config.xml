@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright 2020 (c) Chris Snedaker, All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <abuse>
+            <general>
+                <enabled>0</enabled>
+                <base_uri>https://api.abuseipdb.com/api/v2/</base_uri>
+                <api_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <max_days>30</max_days>
+            </general>
+        </abuse>
+    </default>
+</config>
