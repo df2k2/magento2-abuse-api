@@ -9,7 +9,6 @@ namespace Cs\AbuseApi\Model;
 
 use Cs\AbuseApi\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**

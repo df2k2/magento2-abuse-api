@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Cs\AbuseApi\Model\Client;
 
+use GuzzleHttp\Client;
 use Magento\Framework\ObjectManagerInterface;
 
 /**
@@ -46,11 +47,12 @@ class ClientFactory
      *
      * @param array $data
      *
-     * @return \GuzzleHttp\Client
+     * @return Client
      */
-    public function create(array $data = [])
+    public function create(array $data = []): Client
     {
         return $this->objectManager->create($this->instanceName, ['config' => $data]);
     }
+
 }
 

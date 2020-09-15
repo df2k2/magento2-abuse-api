@@ -20,7 +20,6 @@ use Magento\Framework\Data\Collection;
 /**
  * Class ServiceClient
  *
- * @package Cs\AbuseApi\Model
  */
 class ServiceClient
 {
@@ -28,9 +27,16 @@ class ServiceClient
     public const API_ENDPOINT_CHECK = 'check';
     public const API_ENDPOINT_REPORT = 'report';
 
+    /** @var CheckResponseFactory $checkResponseFactory */
     private $checkResponseFactory;
+
+    /** @var Json $serializer */
     private $serializer;
+
+    /** @var CollectionFactory $collectionFactory */
     private $collectionFactory;
+
+    /** @var Collection $collection */
     private $collection;
 
     /** @var Config $config */
@@ -45,8 +51,12 @@ class ServiceClient
     /**
      * ServiceClient constructor.
      *
-     * @param Config        $config
-     * @param ClientFactory $clientFactory
+     * @param Config               $config
+     * @param ClientFactory        $clientFactory
+     * @param CheckResponseFactory $checkResponseFactory
+     * @param Json                 $serializer
+     * @param CollectionFactory    $collectionFactory
+     * @param Collection           $collection
      */
     public function __construct(
         Config $config,
@@ -54,7 +64,7 @@ class ServiceClient
         CheckResponseFactory $checkResponseFactory,
         Json $serializer,
         CollectionFactory $collectionFactory,
-    Collection $collection
+        Collection $collection
     ) {
         $this->config = $config;
         $this->serializer = $serializer;
@@ -69,7 +79,7 @@ class ServiceClient
     /**
      * @return string
      */
-    public function getBaseUri()
+    public function getBaseUri(): string
     {
         return $this->config->getBaseUri();
     }
@@ -83,7 +93,6 @@ class ServiceClient
      *
      * @return array
      */
-
     public function request(string $method, string $url, $payload): array
     {
         try {
@@ -146,8 +155,10 @@ class ServiceClient
     }
 
     /**
-     * @param string $ip
+     * @param string   $ip
+     * @param int|null $numDays
      *
+     * @return CheckResponse
      */
     public function checkIp(string $ip, int $numDays = null)
     {
@@ -172,6 +183,13 @@ class ServiceClient
         return $this->checkResponseFactory->create($data);
     }
 
+    /**
+     * @param array    $ips
+     * @param int|null $numdays
+     *
+     * @return Collection
+     * @throws \Exception
+     */
     public function checkIps(array $ips, int $numdays = null)
     {
         foreach ($ips as $ip) {

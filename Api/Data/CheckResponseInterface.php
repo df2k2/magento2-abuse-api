@@ -38,52 +38,124 @@ interface CheckResponseInterface
      */
     public function getIsPublic(): bool;
 
+    /**
+     * @return int
+     */
     public function getIpVersion(): int;
 
+    /**
+     * @return bool
+     */
     public function getIsWhitelisted(): bool;
 
+    /**
+     * @return int
+     */
     public function getAbuseConfidenceScore(): int;
 
+    /**
+     * @return string
+     */
     public function getCountryCode(): string;
 
+    /**
+     * @return string
+     */
     public function getUsageType(): string;
 
+    /**
+     * @return string
+     */
     public function getIsp(): string;
 
+    /**
+     * @return string
+     */
     public function getDomain(): string;
 
+    /**
+     * @return array
+     */
     public function getHostnames(): array;
 
+    /**
+     * @return int
+     */
     public function getTotalReports(): int;
 
+    /**
+     * @return int
+     */
     public function getNumDistinctUsers(): int;
 
+    /**
+     * @return string
+     */
     public function getLastReportedAt(): string;
 
+    /**
+     * @param string $value
+     */
     public function setIpAddress(string $value): void;
 
+    /**
+     * @param bool $value
+     */
     public function setIsPublic(bool $value): void;
 
+    /**
+     * @param int $value
+     */
     public function setIpVersion(int $value): void;
 
+    /**
+     * @param bool $value
+     */
     public function setIsWhitelisted(bool $value): void;
 
+    /**
+     * @param string $value
+     */
     public function setAbuseConfidenceScore(string $value): void;
 
+    /**
+     * @param string $value
+     */
     public function setCountryCode(string $value): void;
 
+    /**
+     * @param string $value
+     */
     public function setUsageType(string $value): void;
 
+    /**
+     * @param string $value
+     */
     public function setIsp(string $value): void;
 
+    /**
+     * @param string $value
+     */
     public function setDomain(string $value): void;
 
+    /**
+     * @param array $value
+     */
     public function setHostnames(array $value = []): void;
 
+    /**
+     * @param int $value
+     */
     public function setTotalReports(int $value): void;
 
+    /**
+     * @param int $value
+     */
     public function setNumDistinctUsers(int $value): void;
 
+    /**
+     * @param string $value
+     */
     public function setLastReportedAt(string $value): void;
 
 }
