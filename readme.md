@@ -60,39 +60,126 @@ ipAddress       countryCode isp                                        domain   
 
 **Report IPs** (https://docs.abuseipdb.com/#report-endpoint)
 
+NOT YET IMPLEMENTED
+
 Report problematic IPs to the abuse IP database
 
 
 ## Installation
 
 
+Install as composer package -- instructions to come.
+
+
+**Step 1.** Enable Module
+
+`php bin/magento module:enable Cs_AbuseApi`
+
+**Step 2.** Magento setup:upgrade
+
+`php bin/magento setup:upgrade`
+
+**Step 3.** Clear cache and compile DI
+
+`php bin magento setup:di:compile && php bin/magento cache:flush`
+
+
+**Step 4.** Update Admin Configuration settings
+
+Update configuration settings in admin: **Stores > Configuration > Abuse Api Db** 
+
+* Enable module
+
+* Register For API Key and copy API Key into configuration field  
+
+https://www.abuseipdb.com/register
+
+
+
+
+
+
+### API Key
+
+https://www.abuseipdb.com/register
+
+Register for API Key.
+
 
 
 
 ----
 
+## Usage Example
 
 
-$response = $client->checkIp('115.84.92.92');
+```php
+
+<?php
+
+use Cs\AbuseApi\Model\ServiceClient;
+
+//....
+
+class Testclass 
+{
+    private $serviceClient;
+    
+    //...
+
+    public function __construct(
+        ServiceClient $serviceClient
+    ) {
+        $this->serviceClient = $serviceClient;
+    }
+
+    
+    public function testIpCheck($ip) 
+    {
+        return $this->serviceClient->checkIp($ip);
+    }    
+    
+    public function testIpsCheck($ips)
+    {
+        $collection = $this->serviceClient->checkIps([
+                '34.87.251.211',
+                '66.70.157.189',
+                '144.217.171.225',
+                '14.178.144.104',
+                '167.114.90.33',
+                '188.191.22.226',
+                '198.27.124.169'
+            ],90);
+
+        return $collection;
+    }
+    
+}
 
 ```
-mage\2.3.5\_local\cs_testabuseip.php:29:
-array (size=13)
-  'ipAddress' => string '115.84.92.92' (length=12)
-  'isPublic' => boolean true
-  'ipVersion' => int 4
-  'isWhitelisted' => boolean false
-  'abuseConfidenceScore' => int 100
-  'countryCode' => string 'LA' (length=2)
-  'usageType' => null
-  'isp' => string 'Telecommunication Service' (length=25)
-  'domain' => string 'newworldtelecom.net' (length=19)
-  'hostnames' => 
-    array (size=0)
-      empty
-  'totalReports' => int 46
-  'numDistinctUsers' => int 14
-  'lastReportedAt' => string '2020-06-17T07:58:42+00:00' (length=25)
+
+## Example Output
+
+```
+object(Cs\AbuseApi\Model\Client\CheckResponse)[416]
+  protected '_data' => 
+    array (size=13)
+      'ipAddress' => string '115.84.92.92' (length=12)
+      'isPublic' => boolean true
+      'ipVersion' => int 4
+      'isWhitelisted' => boolean false
+      'abuseConfidenceScore' => int 100
+      'countryCode' => string 'LA' (length=2)
+      'usageType' => null
+      'isp' => string 'Telecommunication Service' (length=25)
+      'domain' => string 'newworldtelecom.net' (length=19)
+      'hostnames' => 
+        array (size=0)
+          empty
+      'totalReports' => int 41
+      'numDistinctUsers' => int 12
+      'lastReportedAt' => string '2020-09-14T17:23:53+00:00' (length=25)
+
 ```
 
 

@@ -7,6 +7,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
+    <preference for="Cs\AbuseApi\Api\ConfigInterface" type="Cs\AbuseApi\Model\Config"/>
+    <preference for="Cs\AbuseApi\Api\Data\CheckResponseInterface" type="Cs\AbuseApi\Model\Client\CheckResponse"/>
+
     <type name="Magento\Config\Model\Config\TypePool">
         <arguments>
             <argument name="sensitive" xsi:type="array">

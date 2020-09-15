@@ -7,13 +7,15 @@ declare(strict_types=1);
 
 namespace Cs\AbuseApi\Model;
 
+use Cs\AbuseApi\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
  * Configuration Settings Class
  */
-class Config
+class Config implements ConfigInterface
 {
 
     public const XML_PATH_ROOT = 'abuse/';

@@ -5,10 +5,13 @@
 
 declare(strict_types=1);
 
-namespace Cs\AbuseApi\Model\Client;
+namespace Cs\AbuseApi\Api\Data;
 
 interface RequestInterface
 {
+
+
+
 
 }
 
