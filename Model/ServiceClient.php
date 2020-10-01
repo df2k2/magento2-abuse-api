@@ -12,6 +12,7 @@ use \GuzzleHttp\Client as GuzzleClient;
 use \GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Magento\Framework\Serialize\Serializer\Json;
+use Cs\AbuseApi\Model\Client\CheckResponseInterface;
 use Cs\AbuseApi\Model\Client\CheckResponse;
 use Cs\AbuseApi\Model\Client\CheckResponseFactory;
 use Magento\Framework\Data\CollectionFactory;
@@ -162,6 +163,7 @@ class ServiceClient
      */
     public function checkIp(string $ip, int $numDays = null)
     {
+        $data = [];
         $payload = [
             'ipAddress'    => $ip,
             'maxAgeInDays' => $numDays ?: $this->config->getMaxDays()
