@@ -112,4 +112,13 @@ class ReportCategory implements OptionSourceInterface
         }
         return false;
     }
+    
+    /**
+     * Test Function
+     */
+    public function getTestResult()
+    {
+        return true;
+    }
+    
 }
