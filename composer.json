@@ -4,7 +4,7 @@
     "description": "Abuse IP Database API Integration for Magento2",
     "homepage": "https://github.com/df2k2/abuse-api",
     "require": {
-        "php": "^7.1|^7.2|^7.3",
+        "php": "~7.0|^8.0|^8.1|^8.2",
         "magento/magento-composer-installer": "*"
     },
     "authors": [

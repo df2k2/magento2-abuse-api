@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/cs-abuseapi/abuseapi" method="GET">
+		<service class="Cs\AbuseApi\Api\AbuseapiManagementInterface" method="getAbuseapi"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/cs-abuseapi/abuseapi" method="POST">
+		<service class="Cs\AbuseApi\Api\AbuseapiManagementInterface" method="postAbuseapi"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/cs-abuseapi/check" method="POST">
+		<service class="Cs\AbuseApi\Api\CheckRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Cs_AbuseApi::Check_save"/>
+		</resources>
+	</route>
+	<route url="/V1/cs-abuseapi/check/search" method="GET">
+		<service class="Cs\AbuseApi\Api\CheckRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Cs_AbuseApi::Check_view"/>
+		</resources>
+	</route>
+	<route url="/V1/cs-abuseapi/check/:checkId" method="GET">
+		<service class="Cs\AbuseApi\Api\CheckRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Cs_AbuseApi::Check_view"/>
+		</resources>
+	</route>
+	<route url="/V1/cs-abuseapi/check/:checkId" method="PUT">
+		<service class="Cs\AbuseApi\Api\CheckRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Cs_AbuseApi::Check_update"/>
+		</resources>
+	</route>
+	<route url="/V1/cs-abuseapi/check/:checkId" method="DELETE">
+		<service class="Cs\AbuseApi\Api\CheckRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Cs_AbuseApi::Check_delete"/>
+		</resources>
+	</route>
+</routes>

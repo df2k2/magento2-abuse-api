@@ -17,4 +17,22 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Cs\AbuseApi\Api\AbuseapiManagementInterface" type="Cs\AbuseApi\Model\AbuseapiManagement"/>
+    <preference for="Cs\AbuseApi\Api\CheckRepositoryInterface" type="Cs\AbuseApi\Model\CheckRepository"/>
+    <preference for="Cs\AbuseApi\Api\Data\CheckInterface" type="Cs\AbuseApi\Model\Check"/>
+    <preference for="Cs\AbuseApi\Api\Data\CheckSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Cs\AbuseApi\Model\ResourceModel\Check\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">cs_abuseapi_check</argument>
+            <argument name="resourceModel" xsi:type="string">Cs\AbuseApi\Model\ResourceModel\Check\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="cs_abuseapi_check_listing_data_source" xsi:type="string">Cs\AbuseApi\Model\ResourceModel\Check\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>

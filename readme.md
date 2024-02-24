@@ -117,7 +117,7 @@ Register for API Key.
 
 <?php
 
-use Cs\AbuseApi\Model\ServiceClient;
+use Cs\AbuseApi\Model\Service****Client;
 
 //....
 
