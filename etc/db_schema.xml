@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="cs_abuseapi_check" resource="default" engine="innodb" comment="cs_abuseapi_check Table">
+		<column xsi:type="int" name="check_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column name="ip_address" nullable="false" xsi:type="varchar" comment="Abuse Ip DB Check Details" length="15"/>
+		<column name="is_public" nullable="true" xsi:type="smallint" comment="is_public"/>
+		<column name="ip_version" nullable="true" xsi:type="smallint" comment="IPv4 or IPv6" identity="false"/>
+        <column name="is_whitelisted" nullable="true" xsi:type="smallint" comment="is_whitelisted" identity="false"/>
+        <column name="abuse_confidence_score" nullable="false" xsi:type="smallint" comment="abuse_confidence_score" identity="false" unsigned="true"/>
+		<column name="country_code" nullable="true" xsi:type="varchar" comment="country_code" length="2"/>
+		<column name="usage_type" nullable="true" xsi:type="varchar" comment="usage_type" length="128"/>
+		<column name="isp" nullable="true" xsi:type="varchar" comment="isp" length="128"/>
+		<column name="domain" nullable="true" xsi:type="varchar" comment="domain" length="255"/>
+        <column xsi:type="text" name="hostnames" nullable="true" comment="Hostnames"/>
+        <column xsi:type="smallint" name="is_tor" nullable="false" comment="Is Tor"/>
+		<column name="total_reports" nullable="true" xsi:type="int" comment="total_reports" identity="false"/>
+		<column name="num_distinct_users" nullable="true" xsi:type="int" comment="num_distinct_users" identity="false" unsigned="true"/>
+		<column name="last_reported_at" nullable="true" xsi:type="datetime" comment="last_reported_at"/>
+		<column name="created_at" nullable="false" xsi:type="timestamp" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="false" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+		<column name="check_days" nullable="false" xsi:type="smallint" comment="The check parameter maxAgeInDays - number of days included in report response data" identity="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="check_id"/>
+        </constraint>
+       <constraint xsi:type="unique" referenceId="CS_ABUSEAPI_CHECK_IP_ADDRESS">
+            <column name="ip_address"/>
+       </constraint>
+	</table>
+</schema>

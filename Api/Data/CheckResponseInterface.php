@@ -141,7 +141,7 @@ interface CheckResponseInterface
     /**
      * @param array $value
      */
-    public function setHostnames(array $value = []): void;
+    public function setHostnames(array $value);
 
     /**
      * @param int $value

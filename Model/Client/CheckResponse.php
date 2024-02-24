@@ -21,7 +21,11 @@ class CheckResponse extends DataObject implements CheckResponseInterface
     public function __construct(
         array $data = []
     ) {
-        parent::__construct($data);
+        $updata = [];
+        foreach ($data as $key => $value) {
+            $updata[\Magento\Framework\Api\SimpleDataObjectConverter::camelCaseToSnakeCase($key)] = $value;
+        }
+        parent::__construct($updata);
     }
 
     /**
@@ -101,15 +105,20 @@ class CheckResponse extends DataObject implements CheckResponseInterface
      */
     public function getHostnames(): array
     {
-        return $this->getData(self::HOSTNAMES);
+        $hostnames = explode(',',$this->getData(self::HOSTNAMES));
+        if (is_array($hostnames))
+        {
+            return $hostnames;
+        }
+        return [];
     }
 
     /**
      * @inheritDoc
      */
-    public function getTotalReports(): int
+    public function setHostnames(array $value): CheckResponse
     {
-        return $this->getData(self::TOTAL_REPORTS);
+        return $this->setData(self::HOSTNAMES, implode(',',$value));
     }
 
     /**
@@ -203,14 +212,6 @@ class CheckResponse extends DataObject implements CheckResponseInterface
     /**
      * @inheritDoc
      */
-    public function setHostnames(array $value = []): void
-    {
-        $this->setData(self::HOSTNAMES, $value);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function setTotalReports(int $value): void
     {
         $this->setData(self::TOTAL_REPORTS, $value);
@@ -232,5 +233,10 @@ class CheckResponse extends DataObject implements CheckResponseInterface
         $this->setData(self::LAST_REPORTED_AT, $value);
     }
 
+    public function getTotalReports(): int
+    {
+        // TODO: Implement getTotalReports() method.
+        return $this->getData('total_reports');
+    }
 }
 

@@ -8,6 +8,12 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
+                <resource id="Cs_AbuseApi::Check" title="Check" sortOrder="10">
+                    <resource id="Cs_AbuseApi::Check_save" title="Save Check" sortOrder="10"/>
+                    <resource id="Cs_AbuseApi::Check_delete" title="Delete Check" sortOrder="20"/>
+                    <resource id="Cs_AbuseApi::Check_update" title="Update Check" sortOrder="30"/>
+                    <resource id="Cs_AbuseApi::Check_view" title="View Check" sortOrder="40"/>
+                </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
